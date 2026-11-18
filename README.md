@@ -110,13 +110,13 @@ For one line of text the steps take a moment of thought. For an article they are
 A writer cannot forget what it knows, so it cannot tell whether its own draft stands alone. The skill therefore sends the draft to a cold reader. This is a new agent that receives two things: the draft, and one line saying who the reader is and where they meet the text.
 
 ```mermaid
-flowchart LR
+flowchart TD
     W["Writing agent<br/>knows your whole conversation"]
     R["Cold reader<br/>sees only the draft"]
     U(["You"])
-    W -- "the draft and one line about the reader" --> R
+    W -- "the draft and one line<br/>about the reader" --> R
     R -- "its report" --> W
-    W -- "the revised text and a short note" --> U
+    W -- "the revised text<br/>and a short note" --> U
 ```
 
 The cold reader reads once, as that reader, and reports:
