@@ -62,6 +62,7 @@ The length is whatever this leaves.
 - **Use one term per thing**, from the first mention to the last.
 - **Write in the reader's language from the first draft.** Compose in it directly and follow its own idiom, punctuation and forms of address. These steps describe what a sentence does for the reader. Apply them to that, whatever the words are.
 - **Format for the destination.** Use only what renders where the text is going. Lists hold parallel items, numbered steps hold a sequence, tables hold comparisons, prose holds reasoning.
+- **Write for the reader who scans.** Most readers scroll through a page before they read it, and their eye stops at headings, tables, figures, lists and bold text. Each of these has to make sense to someone who has read nothing around it. A column header says what its cells contain and in which unit. A number says what it counts. A heading says what its section tells. A caption or label names what a quote, picture or example shows.
 
 ## 5. Cut
 

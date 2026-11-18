@@ -24,7 +24,9 @@ Proper use: the reader really holds the mistaken view, or faces a real choice be
 
 The text leans on something only the writer has seen. Step 2 of the skill lists the forms. Two more belong here: sentences addressed to the person who asked for the text (an opening acknowledgement, a closing offer of more help), and mentions of drafts, changes or instructions.
 
-Put on the page what the reader needs, and move the rest to your note to the user.
+The same thing happens inside a text. A table whose cells say "5 of 5" depends on a paragraph above it to say five of what, and a reader who scans meets the table first.
+
+Put on the page what the reader needs, in the place where they meet it, and move the rest to your note to the user.
 
 ## 4. Telling the reader how to react
 

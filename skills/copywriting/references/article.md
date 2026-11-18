@@ -7,6 +7,7 @@ The reader chose to open this, and can leave at any line. Many read the title an
 - **Paragraphs.** One topic each, opened by a sentence that states it. The first sentences of the paragraphs, read in a row, should give the argument.
 - **Order.** Follow the reader's questions. After the point they usually want to know why it holds, then what it means for them.
 - **Headings.** Use them when the piece is long enough that readers will navigate it. Word each as a statement of what the section says ("Paper prices rose 15 % in 2026"), so the headings also work as a summary.
+- **Tables and figures.** The reader's eye goes to them before the text. Give every column a header that says what its cells contain and in which unit ("Criteria met with the plugin", "Price in kr. per month"), and give a figure a caption that states what it shows. Test each one by covering the paragraphs around it.
 - **Reasoning in prose.** Keep "because" and "so" in sentences, where the links between ideas stay visible. Use lists for items that are parallel.
 - **Evidence.** Support a claim where the reader may doubt it: a number with its source, or one example from the actual case.
 - **Ending.** End when the last needed thing is said. Add a closing section only when it tells the reader what to do next.

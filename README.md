@@ -8,9 +8,11 @@ It works in any language, and for articles, documentation, emails, chat messages
 
 ## Example
 
-The request was a LinkedIn post, written from a few lines of notes about an agency that stopped pitching for free. Both versions below use the same numbers from those notes.
+The request was a LinkedIn post, written from a few lines of notes about an agency that stopped pitching for free. Both versions below were written from the same notes.
 
-Without the plugin, the post holds its result back, announces what is coming, and closes with a moral, a question to the audience and hashtags:
+### The post without the plugin
+
+It holds its result back, announces what is coming, and closes with a moral, a question to the audience and hashtags:
 
 > Last year we stopped doing free pitches.
 >
@@ -28,7 +30,9 @@ Without the plugin, the post holds its result back, announces what is coming, an
 >
 > #agencylife #webdesign #smallbusiness
 
-With the plugin, the first two sentences give the change and its result, and each paragraph after them adds facts:
+### The same post with the plugin
+
+The first two sentences give the change and its result, and each paragraph after them adds facts:
 
 > Last year my agency stopped doing free pitches. We offered a paid discovery workshop instead, and in 2025 we won more clients from fewer prospects.
 >
@@ -70,24 +74,30 @@ Then run:
 codex plugin add agent-copywriting@agent-copywriting
 ```
 
-Tested with Codex CLI 0.163.0 on 18 November 2026: the plugin installs with these two commands, Codex loads the skill when you ask for copy, and the cold read runs in a subagent that starts without your conversation. The test figures further down are from Claude Code.
+Tested with Codex CLI 0.163.0 on 18 November 2026: the plugin installs with these two commands and works as described on this page.
 
 ## Use
 
 Ask for the text and say who it is for:
 
-> Write the email that tells our customers about automatic invoicing. They are small trades businesses.
+```text
+Write the email that tells our customers about automatic invoicing. They are small trades businesses.
+```
 
 The agent loads the plugin's instructions when you ask it to write, edit, shorten or review a text for a reader. You can also call them by name: `/agent-copywriting:copywriting` in Claude Code, `$copywriting` in Codex.
 
 You get the text, ready to use, and a short note under it. This is part of the note from a test run, for an office-move announcement written from the organiser's notes:
 
+> **The agent's note**
+>
 > - **What I left out:** the 12% cheaper lease, the deposit dispute and the name "Projekt Elbe". They don't change anything the team has to do. […]
 > - **Two things to check:** I said the key cards are handed out at the reception in the new office. Your notes don't say which reception, so please confirm. […]
 
 To check a text you already have, ask for a cold read, which is a read by a second agent that sees only the text, and name the reader:
 
-> Give this announcement a cold read. The readers are our warehouse staff, who will see it on the noticeboard.
+```text
+Give this announcement a cold read. The readers are our warehouse staff, who will see it on the noticeboard.
+```
 
 ## How it works
 
@@ -98,12 +108,10 @@ The plugin contains one skill: a set of instructions that the agent loads when y
 1. **Know the reader.** The agent answers four questions: who reads this, where they meet it, what they already know, and what they must know or do afterwards. Then it states the point of the text in one sentence.
 2. **Separate its own context from the reader's.** The agent treats everything from your conversation as invisible to the reader: working names, earlier drafts, decisions, the request itself. Each thing the text mentions is explained on the page or left out.
 3. **Choose the content and its order.** The point goes first. After it comes what this reader needs in order to understand it, trust it and act on it. For articles, emails, slides, landing pages and product text, the agent first reads a reference file with the conventions of that format.
-4. **Write plain statements.** The agent says what is the case, with the actual number or name, and uses only facts it has. Where the text cannot work without a missing fact, it writes `[NEED: …]` for you to fill in.
+4. **Write plain statements.** The agent says what is the case, with the actual number or name, and uses only facts it has. Where the text cannot work without a missing fact, it writes `[NEED: …]` for you to fill in. Headings, tables and figures are written to make sense alone, for the reader who scrolls before reading.
 5. **Cut.** A sentence stays only if the reader would miss it. The agent then checks the draft for ten habits that cost a reader effort, listed below.
 6. **Get a cold read.** A second agent reads the draft as the reader would. The next section describes it.
 7. **Hand over.** You get the text and the note described under Use.
-
-For one line of text the steps take a moment of thought. For an article they are most of the work.
 
 ### A second agent reads the draft with no context
 
@@ -119,7 +127,7 @@ flowchart TD
     W -- "the revised text<br/>and a short note" --> U
 ```
 
-The cold reader reads once, as that reader, and reports:
+The cold reader first scans the text as someone scrolling the page would, then reads it once, and reports:
 
 - what it took the text to be after the opening
 - the main point, in one sentence of its own
@@ -127,7 +135,7 @@ The cold reader reads once, as that reader, and reports:
 - what it could have skipped
 - what it still needed to know
 
-The writing agent compares this report with the point it set in step 1. When the cold reader took away something else, the agent restructures the text. It rewrites the places where the cold reader stumbled, cuts what it skipped, and passes the questions it cannot answer on to you.
+The writing agent compares this report with the point it set in step 1. When the cold reader took away something else, the agent restructures the text. The writing agent also rewrites the places where the cold reader stumbled, cuts what the cold reader skipped, and passes the questions it cannot answer on to you.
 
 In Claude Code, the cold reader is an agent that comes with the plugin. It starts without your project instructions (`CLAUDE.md`), its only tool is reading files, and its instructions limit it to the draft. Codex plugins cannot include agents, so in Codex the skill starts an ordinary subagent and gives it the same instructions. That subagent starts without your conversation, but it does receive your `AGENTS.md`.
 
@@ -139,7 +147,7 @@ A cold read is one extra short agent session. In the test runs below, a request 
 
 Many writing prompts list words and phrases to avoid. A list like that covers one language, and a model that is told to avoid one stock phrase tends to reach for the next. This skill contains no word list. It describes ten habits by their effect on the reader:
 
-| Habit | What the text does |
+| Habit the agent checks for | What a text with this habit does |
 | --- | --- |
 | Performing | A sentence is written for effect: a maxim that closes a paragraph, a question the writer answers at once |
 | Starting from what something is not | The text denies an idea the reader never had, then corrects it |
@@ -154,11 +162,11 @@ Many writing prompts list words and phrases to avoid. A list like that covers on
 
 For each habit the skill also gives the repair, and the case where the habit is the right choice. A contrast, for example, is right when the reader really holds the other view.
 
-## Test results
+## Test results: 25 of 30 quality criteria met with the plugin, 18 without
 
-Seven test cases come with the plugin. Each gives the agent a realistic request, and a model judges the reply against three to five criteria in plain language, such as "a customer who has seen nothing but this email can understand every reference in it". The table shows how many criteria each reply met in the latest full run, on 18 November 2026 with Claude Code 2.1.325.
+Eight test cases come with the plugin. Each gives the agent a realistic request, and a model judges the reply against three to five criteria in plain language, such as "a customer who has seen nothing but this email can understand every reference in it". The table is from the latest full run of the first seven cases, on 18 November 2026 with Claude Code 2.1.325.
 
-| Case | With the plugin | Without |
+| Test case | Criteria met with the plugin | Criteria met without it |
 | --- | --- | --- |
 | Customer email, written from notes full of internal names | 5 of 5 | 4 of 5 |
 | Interface text in Danish | 5 of 5 | 3 of 5 |
@@ -169,27 +177,29 @@ Seven test cases come with the plugin. Each gives the agent a realistic request,
 | Slide deck for a decision | 3 of 5 | 3 of 5 |
 | **All cases** | **25 of 30** | **18 of 30** |
 
-Each case ran once, so the figures show a direction and will vary between runs. The editing case varies most.
+Each case ran once, so the figures show a direction and will vary between runs. In earlier runs the editing case varied most.
 
-To run the cases yourself, use the eval runner that is part of Claude Code, from the plugin folder:
+The eighth case was added later. It asks for a results section with a table and checks that the table can be read without the text around it. With the plugin the table passed in 2 of 2 runs, and without it in 0 of 2.
+
+To run the cases yourself, use the eval runner that is part of Claude Code, from a clone of this repository:
 
 ```sh
 claude plugin eval . --runs 1 --judge-model sonnet --no-publish
 ```
 
-This starts 14 agent sessions on your own account: each case once with the plugin and once without. `--judge-model` sets the model that judges the replies, and `--no-publish` keeps the report on your machine, in `evals/results/`. The full run above cost about 2.70 USD.
+This starts 16 agent sessions on your own account: each case once with the plugin and once without. `--judge-model` sets the model that judges the replies, and `--no-publish` keeps the report on your machine, in `evals/results/`. The run of seven cases above cost about 2.70 USD.
 
 ## What is in the repository
 
-| Path | Content |
+| Path in the repository | What it holds |
 | --- | --- |
 | `skills/copywriting/SKILL.md` | The seven steps |
 | `skills/copywriting/references/` | The reference files for each format, the ten habits and the instructions for the cold reader |
 | `agents/cold-reader.md` | The cold reader for Claude Code |
-| `evals/` | The seven test cases and their criteria |
+| `evals/` | The eight test cases and their criteria |
 
-## Background
+## Background: Strunk's rule for concise writing
 
-The skill takes its standard for step 5 from William Strunk Jr., in *The Elements of Style*:
+The skill's rule for cutting a draft comes from William Strunk Jr., in *The Elements of Style*:
 
 > Vigorous writing is concise. A sentence should contain no unnecessary words, a paragraph no unnecessary sentences, for the same reason that a drawing should have no unnecessary lines and a machine no unnecessary parts. This requires not that the writer make all sentences short or avoid all detail and treat subjects only in outline, but that every word tell.
