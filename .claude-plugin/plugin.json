@@ -1,0 +1,7 @@
+{
+  "name": "agent-copywriting",
+  "version": "0.1.0",
+  "author": { "name": "ossianravn", "url": "https://github.com/ossianravn" },
+  "description": "Write copy for the reader: plain, concise text in any language, checked by a cold reader who has only the page.",
+  "repository": "https://github.com/ossianravn/agent-copywriting"
+}

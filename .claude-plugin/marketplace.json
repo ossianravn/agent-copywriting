@@ -1,0 +1,6 @@
+{
+  "name": "agent-copywriting",
+  "description": "Write copy for the reader, in any language.",
+  "owner": { "name": "ossianravn" },
+  "plugins": [{ "name": "agent-copywriting", "source": "./", "description": "Write copy for the reader: plain, concise text in any language, checked by a cold reader who has only the page." }]
+}
