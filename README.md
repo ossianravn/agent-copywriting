@@ -70,7 +70,7 @@ Then run:
 codex plugin add agent-copywriting@agent-copywriting
 ```
 
-The plugin follows the Codex plugin format but has only been tested in Claude Code so far. All figures on this page are from Claude Code.
+Tested with Codex CLI 0.163.0 on 18 November 2026: the plugin installs with these two commands, Codex loads the skill when you ask for copy, and the cold read runs in a subagent that starts without your conversation. The test figures further down are from Claude Code.
 
 ## Use
 
@@ -129,7 +129,7 @@ The cold reader reads once, as that reader, and reports:
 
 The writing agent compares this report with the point it set in step 1. When the cold reader took away something else, the agent restructures the text. It rewrites the places where the cold reader stumbled, cuts what it skipped, and passes the questions it cannot answer on to you.
 
-In Claude Code, the cold reader is an agent that comes with the plugin. It starts without your project instructions (`CLAUDE.md`), its only tool is reading files, and its instructions limit it to the draft. Codex plugins cannot include agents, so in Codex the skill starts an ordinary subagent and gives it the same instructions.
+In Claude Code, the cold reader is an agent that comes with the plugin. It starts without your project instructions (`CLAUDE.md`), its only tool is reading files, and its instructions limit it to the draft. Codex plugins cannot include agents, so in Codex the skill starts an ordinary subagent and gives it the same instructions. That subagent starts without your conversation, but it does receive your `AGENTS.md`.
 
 The agent asks for a cold read when the text is longer than a short message, or when a misreading would be costly. To skip it for one request, say so. To get one for a short text, ask for it.
 
